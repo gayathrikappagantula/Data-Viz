@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A scatter plot showing the relationship between the year a building was acquired and the year it was constructed.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Nithiiin/nithinbalaji.github.io/main/building_inventory.csv",
+    "format": {"type": "csv"}
+  },
+  "vconcat": [
+    {
+      "title": {
+        "text": "Relationship Between the Year Acquired and the Year Constructed"
+      },
+      "mark": {"type": "point", "size": 50},
+      "encoding": {
+        "x": {
+          "field": "Year Constructed",
+          "type": "quantitative",
+          "axis": {
+            "title": "Year Constructed",
+            "labelFontSize": 10,
+            "titleFontSize": 15
+          }
+        },
+        "y": {
+          "field": "Year Acquired",
+          "type": "quantitative",
+          "axis": {
+            "title": "Year Acquired",
+            "labelFontSize": 10,
+            "titleFontSize": 15
+          }
+        },
+        "tooltip": [
+          {"field": "Year Constructed", "type": "quantitative"},
+          {"field": "Year Acquired", "type": "quantitative"}
+        ]
+      },
+      "width": 1000,
+      "height": 500
+    },
+    {
+      "title": {
+        "text": "Total Square Footage as a Function of Congressional District",
+        "anchor": "start",
+        "offset": 50,
+        "dx": 470
+      },
+      "mark": {"type": "bar"},
+      "encoding": {
+        "x": {
+          "field": "Congress Dist",
+          "type": "ordinal",
+          "axis": {
+            "title": "Congressional District",
+            "labelFontSize": 10,
+            "titleFontSize": 15
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Square Footage",
+          "type": "quantitative",
+          "axis": {
+            "title": "Square Footage",
+            "labelFontSize": 10,
+            "titleFontSize": 15
+          }
+        },
+        "tooltip": [
+          {"field": "Year Acquired", "type": "quantitative"},
+          {
+            "aggregate": "sum",
+            "field": "Square Footage",
+            "type": "quantitative",
+            "title": "Total Sq Footage"
+          }
+        ]
+      },
+      "width": 1000,
+      "height": 500
+    }
+  ],
+  "config": {}
+}
